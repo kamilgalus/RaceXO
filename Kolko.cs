@@ -27,11 +27,18 @@ namespace Przeslo
             tor[pozycjaStartowaO] = znakPionka;
         }
 
-        public void Przesun(int iloscMiejsc, char[] tor)
+        public void PrzesunDoPrzodu(int iloscMiejsc, char[] tor)
         {
             tor[pozycjaPionkaO] = '_';
             tor[pozycjaPionkaO + iloscMiejsc] = znakPionka;
             pozycjaPionkaO = pozycjaPionkaO + iloscMiejsc;
+        }
+        public void PrzesunDoTylu(int iloscMiejsc, char[] tor)
+        {
+            tor[pozycjaPionkaO] = '_';
+            tor[pozycjaPionkaO - iloscMiejsc] = znakPionka;
+            pozycjaPionkaO = pozycjaPionkaO - iloscMiejsc;
+
         }
     }
 }
