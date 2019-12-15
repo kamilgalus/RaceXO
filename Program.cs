@@ -25,26 +25,51 @@ namespace Przeslo
 
 
 
-            for (int runda = 0; runda < 40; runda++)
+            for (int runda = 0;; runda++)
             {
-                decyzjaSedziego=szymonMarciniak.KogoKolej(runda);
+                int okrazenie;
+                decyzjaSedziego = szymonMarciniak.KogoKolej(runda);
                 circuitdeMonaco.WyswietlTory();
-                
+                okrazenie = runda / 38;
 
-                if(decyzjaSedziego==true)
+                if (okrazenie%2==0) 
                 {
-                    ListaPionkow[0].Przesun(1, circuitdeMonaco.ZwrocTabliceO());
-                }
-                else
-                {
-                    ListaPionkow[1].Przesun(1, circuitdeMonaco.ZwrocTabliceX());
+                    if (decyzjaSedziego == true)
+                    {
+                        ListaPionkow[0].PrzesunDoPrzodu(1, circuitdeMonaco.ZwrocTabliceO());
+                    }
+                    else
+                    {
+                        ListaPionkow[1].PrzesunDoPrzodu(1, circuitdeMonaco.ZwrocTabliceX());
+                    }
                 }
 
-                System.Threading.Thread.Sleep(500);
-                Console.Clear();             
+
+                if (okrazenie%2==1) 
+                {
+
+                    if (decyzjaSedziego == false)
+                    {
+                        ListaPionkow[0].PrzesunDoTylu(1, circuitdeMonaco.ZwrocTabliceO());
+                    }
+                    else
+                    {
+                        ListaPionkow[1].PrzesunDoTylu(1, circuitdeMonaco.ZwrocTabliceX());
+                    }
+                }
+
+
+
+
+
+
+
+
+                System.Threading.Thread.Sleep(50);
+                Console.Clear();
             }
-            
-            
+
+
 
         }
 
